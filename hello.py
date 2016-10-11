@@ -1,20 +1,22 @@
 from flask import Flask 
+from flask import request
 from flask_cors import CORS, cross_origin
 
-app = Flask(__name__)
+import flask as myFlask
+
+app = myFlask.Flask(__name__)
 CORS(app)
 
 @app.route("/") 
-def hello():     
-	return "Hello!" 
-
-@app.route('/name')
-def enterName():
-	return "Please specify your name in the address bar e.g /name/ervin"
+def root():     
+	return app.send_static_file('index.html')
 	
-@app.route('/name/<string:name>')
-def name(name):
-    return 'Your name is %s' %name
+@app.route('/name', methods=['GET','POST'])
+def name():
+	if request.method == 'POST':
+		return 'Your name is ' + myFlask.request.form["name"]
+	
+	return 'Your name is ' + myFlask.request.args["name"]
 	
 if __name__ == "__main__":     
 	app.run()
