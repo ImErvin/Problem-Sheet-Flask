@@ -16,7 +16,11 @@ name and have it appended to the end of the response.
 GET. Set the form action to ”/name” Add a submit button. In hello.py, change the
 ”/name” route to accept the name variable as a URL encoded GET variable. Run the
 server and test.
-  6. Replace the GET method of the previous question with the POST method.
+  6. Change the form in the previous question to perform an AJAX call. Instead of having
+the page refresh when the Submit button is clicked, have it perform the AJAX call and
+output the result to a disabled textarea in index.html.
+
+  7. Replace the GET method of the previous question with the POST method.
   
 **References**
   >[1] Bootstrap. Bootstrap: Getting started. </br>
