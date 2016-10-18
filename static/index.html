@@ -19,25 +19,34 @@
   </head>
   <body>
 	 <div class="container">
-		 <form action="/name" method="POST">
+		 <form action="/name" method="GET">
 		  <div class="form-group">
 			<label for="exampleInputEmail1"></br>Enter your name</label>
-			<input type="text" class="form-control" name="name" id="name" placeholder="e.g John Smith">
+			<input type="text" class="form-control" name="userinput" id="userinput" placeholder="e.g John Smith">
 		  </div>
-		  <button type="submit" class="btn btn-info btn-lg btn-block">Submit</button>
+		  <button type="submit" id="submit" class="btn btn-info btn-lg btn-block">Submit</button>
 		</form>
-	 </div>
+	   </br>
+    <form>
+      <div class="form-group">
+      <textarea type="text" class="form-control" disabled id="serveroutput"></textarea>
+      </div>
+    </form>
+    </div>
 	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
 	<script>
-	/*var name;
-	name = document.getElementById("name").value;
 		
-		$("#myButton").click(function(event){
+		$("#submit").click(function(event){
 			event.preventDefault();
-			$.get("http://127.0.0.1:5000/name/"+name, function(data) { alert("Success\n Data: " + data)});
-		});*/
+      data = {userinput: $("#userinput").val()}
+			$.get("/name", data, function(resbody) {
+          $("#serveroutput").text(resbody);
+      });
+		});
 	</script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

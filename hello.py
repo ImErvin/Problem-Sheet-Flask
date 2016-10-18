@@ -13,10 +13,8 @@ def root():
 	
 @app.route('/name', methods=['GET','POST'])
 def name():
-	if request.method == 'POST':
-		return 'Your name is ' + myFlask.request.form["name"]
-	
-	return 'Your name is ' + myFlask.request.args["name"]
+	name = myFlask.request.values["userinput"]
+	return 'Your name is ' + name
 	
 if __name__ == "__main__":     
 	app.run()
